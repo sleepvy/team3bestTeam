@@ -12,6 +12,12 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
     <script src="FireBaseInit.js">
         var db = firebase.database();
+        //this function is called when the user is signed in on page load
+        //aka use it as a setup function because it is called when the UID
+        //is known which we need to access user specific data base info
+        function UserSignedIn(){
+            alert("The UID is set in a variable named 'UID' .");
+        }
     </script>
 
 </head>

@@ -12,3 +12,20 @@ var config = {
 firebase.initializeApp(config);
   	  		
 }());
+
+var UID = "";
+var U_Name = "";
+firebase.auth().onAuthStateChanged(function(firebaseUser){
+	if(firebaseUser){
+		UID = firebaseUser.uid;
+		UserSignedIn();
+		var name = database.ref("users/" + firebaseUser.uid+"/UserName");
+		name.on('value', function(snapshot){
+			U_name = snapshot.val();
+			//document.getElementById("UserNameP").innerHTML = snapshot.val();
+		});
+	}else{
+		alert("Would have sent them to login page");
+		//window.location = "Login.html";
+	}
+});
