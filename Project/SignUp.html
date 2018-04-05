@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Title </title>
+    <link href="project.css" type="text/css" rel="stylesheet" />
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyCcPhzOSSNKeB8tUIpBxgpgiN3qByeg2dY",
+            authDomain: "snowsafe-b378c.firebaseapp.com",
+            databaseURL: "https://snowsafe-b378c.firebaseio.com",
+            projectId: "snowsafe-b378c",
+            storageBucket: "",
+            messagingSenderId: "676990316274"
+        };
+        firebase.initializeApp(config);
+
+
+        var db = firebase.database();
+    </script>
+
+</head>
+
+<body>
+    <table id="loginTable">
+
+        <tr><td>Name</td><td><input type="text" id="Name" placeholder="Name"></td></tr>
+        <tr><td>Email</td><td><input type="email" id="Email" placeholder="Email"></td></tr>
+        <tr><td>Password</td><td><input type="password" id="Password" placeholder="Password"></td></tr>
+        <tr><td>Retype Password</td><td><input type="password" id="Passwordd" placeholder="Password"></td></tr>
+        
+        <tr><td><input type="button" value="SignUp" onclick="signUp()"/></td></tr>
+    </table>
+
+
+
+<script type="text/javascript">
+    const txtName = document.getElementById("Name");
+    const txtEmail = document.getElementById("Email");
+    const txtPassword = document.getElementById("Password");
+    const txtPasswordd = document.getElementById("Passwordd");
+
+    function signUp(){
+        const Name = txtName.value;
+        const Email = txtEmail.value;
+        const Password = txtPassword.value;
+        const Passwordd = txtPasswordd.value;
+        
+        if(Name==null || Name=="", Email==null || Email=="", Password==null || Password=="", Passwordd==null || Passwordd==""){
+            alert("Please Fill All Required Field");
+        }else{
+            if(Password==Passwordd){
+                const auth = firebase.auth();
+        
+                const promise = auth.createUserWithEmailAndPassword(Email, Password);
+                promise.catch(function(error){
+                
+                    var errorCode = error.code;
+                    
+                    if (errorCode == 'auth/weak-password') {
+                        alert('The password is too weak.');
+                    } else if (errorCode == 'auth/email-already-in-use') {
+                        alert('This email already has an account linked to it. If it is yours go to the login page.');
+                    } else if (errorCode == 'auth/invalid-email') {
+                        alert('This email is invalid.');
+                    }else {
+                        alert("There was an error when trying to sign you up. Please check your internet and try again.");
+                    }           
+                });
+            }else{
+                alert("Passwords do not match");
+            }
+        }
+    }
+    
+    firebase.auth().onAuthStateChanged(function(firebaseUser){
+        if(firebaseUser){
+            const Name = txtName.value;
+            const Email = txtEmail.value;
+            const Password = txtPassword.value;
+            const Passwordd = txtPasswordd.value;
+            
+            
+            var updates = {
+                Name: Name,
+                Email: Email
+            };
+            
+            firebase.database().ref('users/' + firebaseUser.uid).update(updates, function(err) {
+                if(err == null){
+                    window.location = "index.html";
+                }else{
+                    alert("There was an error when trying to sign you up. Please check your internet and try again.");
+                }
+            });
+        }else{
+            console.log("not logged in");
+        }
+    });
+</script>
+</body>
+
+</html>
