@@ -1,2 +1,15 @@
-This project milestone 4 submission should be a PDF named ProjectMilestone4_<TeamName> included in your github repository. 
-This document should contain the ER diagram showing your database model as mentioned above and a link to your sql scripts in github used for creating and populating your database.
+Milestone 4
+
+We are using a NOSQL database, please see "SampleDatabase.png" for our current database model.
+
+We contacted Professor Alan and discussed the use of a NOSQL backend and recieved permision under the conditions that all of us worked with the backend, not just the person who is familiar with it.
+
+As such we do not have SQl scripts to submit. All of our communication with the database is through javascript.
+A sample database read takes the form of:
+database().ref("users/<user_Id>/Name").once('value', function(snapshot){
+    if(snapshot.exists()){
+        console.log(snapshot.value());
+    }else{
+        console.log("value does not exist");
+    }
+});
