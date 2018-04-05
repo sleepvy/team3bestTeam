@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Title </title>
+    <link href="project.css" type="text/css" rel="stylesheet" />
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyCcPhzOSSNKeB8tUIpBxgpgiN3qByeg2dY",
+            authDomain: "snowsafe-b378c.firebaseapp.com",
+            databaseURL: "https://snowsafe-b378c.firebaseio.com",
+            projectId: "snowsafe-b378c",
+            storageBucket: "",
+            messagingSenderId: "676990316274"
+        };
+        firebase.initializeApp(config);
+
+
+        var db = firebase.database();
+    </script>
+
+</head>
+
+<body>
+    <table id="loginTable">
+
+        <tr><td>Email</td><td><input type="email" id="UserName" placeholder="Email"></td></tr>
+        <tr><td>Password</td><td><input type="password" id="Password" placeholder="Password"></td></tr>
+        
+        <tr><td><input type="button" value="Login" onclick="LoginClick()"/></td></tr>
+        <tr><td><input type="button" value="Send Password Reset Email" onclick="sendEmail()"/></td></tr>
+        <tr><td><a href="SignUp.html">Sign Up</a></td></tr>
+    </table>
+
+
+
+<script type="text/javascript">
+    const txtEmail = document.getElementById("UserName");
+    const txtPassword = document.getElementById("Password");
+
+    function LoginClick(){
+        const email = txtEmail.value;
+        const pass = txtPassword.value;
+        const auth = firebase.auth();
+        console.log("clicked");
+        const promise = auth.signInWithEmailAndPassword(email, pass);
+        promise.catch(function(e){
+            if(e != null){
+                alert("Sorry we do not have a user by that login, please double check your info or sign up. Thanks!");
+                console.log(e.message);
+            }
+        });
+    };
+    
+    function sendEmail(){
+        var auth = firebase.auth();
+        var emailAddress = txtEmail.value;
+
+        auth.sendPasswordResetEmail(emailAddress).then(function() {
+            alert("Reset email sent to: " + emailAddress);
+        }, function(error) {
+            alert("Could not send email. Make sure email used to sign up is in email text box. " + error.message);
+        });
+    }
+    
+    firebase.auth().onAuthStateChanged(function(firebaseUser){
+        if(firebaseUser){
+            window.location = "index.html";
+        }else{
+            console.log("not logged in");
+        }
+    });
+</script>
+</body>
+
+</html>
