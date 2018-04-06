@@ -1,12 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#topBar{
+	background-color: blue;    
+	margin: 0;
+    padding: 10px;
+
+}
+
 nav ul {
     list-style-type: none;
     display:flex;
     justify-content: space-around;
-    background-color: lightgrey;
+    background-color: lightblue;
     padding: 15px;
 }
 
-nav ul a {
+nav ul a {    
     text-decoration: none;
 }
 
