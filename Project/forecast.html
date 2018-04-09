@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Title </title>
+    <title> SnowSafe </title>
     <link href="project.css" type="text/css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
@@ -24,7 +25,11 @@
 </head>
 
 <body>
-    <h1>Avalanche Forecast</h1>
+  <div id="topBar">
+    <h1>Avalanche Forecast 
+     <img src="snowflake.png" alt="logo" style="width:50px;height:40px;" align="right">
+    </h1>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -35,6 +40,8 @@
             <li><a href="search.html">Search by Location</a></li>
         </ul>
     </nav>
+  </div>
+
 <!--    forecast from http://avalanche.state.co.us -->
         <div>
         <iframe name="caic_fx_map" id="caic_fx_map"

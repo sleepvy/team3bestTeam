@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Title </title>
+    <title> SnowSafe </title>
     <link href="project.css" type="text/css" rel="stylesheet" />
     <link href="map.css" type="text/css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
@@ -22,7 +22,11 @@
 </head>
 
 <body>
-    <h1>Search by Location</h1>
+  <div id="topBar">
+    <h1>Search by Location 
+     <img src="snowflake.png" alt="logo" style="width:50px;height:40px;" align="right">
+    </h1>
+
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -33,7 +37,9 @@
             <li><a href="search.html">Search by Location</a></li>
         </ul>
     </nav>
+  </div>
     
+
     <!-- MAP --> 
 
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
