@@ -39,3 +39,22 @@ input[type=submit] {
 input[type=text] {
     border-radius: 5px;
 }
+
+/* make the placeholders italic */
+::-webkit-input-placeholder {
+    color: lightgray;
+    font-style: italic;
+ }
+ :-moz-placeholder {
+    color: lightgray;
+    font-style: italic;
+ }
+ ::-moz-placeholder {
+    color: lightgray;
+    font-style: italic;
+    
+ }
+ :-ms-input-placeholder {
+    color: lightgray;  
+    font-style: italic;
+ }
