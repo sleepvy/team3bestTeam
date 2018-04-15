@@ -29,12 +29,26 @@
 </head>
 
 <body>
+    
+    <div id="topBar">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="addData.html">Add Data</a></li>
+            <li><a href="history.html">Personal History</a></li>
+            <li><a href="forecast.html">Avalanche Forecast</a></li>
+            <li><a href="photos.html">Shared Photos</a></li>
+            <li><a style="color:darkgrey" href="search.html">Search by Location</a></li>
+        </ul>
+    </nav>
+  </div>
+    
     <table id="loginTable">
-
-        <tr><td>Name</td><td><input type="text" id="Name" placeholder="Name"></td></tr>
-        <tr><td>Email</td><td><input type="email" id="Email" placeholder="Email"></td></tr>
-        <tr><td>Password</td><td><input type="password" id="Password" placeholder="Password"></td></tr>
-        <tr><td>Retype Password</td><td><input type="password" id="Passwordd" placeholder="Password"></td></tr>
+        <tr><td> Sign Up </td></tr>
+        <tr><td><input type="text" id="Name" placeholder="Name"></td></tr>
+        <tr><td><input type="email" id="Email" placeholder="Email"></td></tr>
+        <tr><td><input type="password" id="Password" placeholder="Password"></td></tr>
+        <tr><td><input type="password" id="Passwordd" placeholder="Retype Password"></td></tr>
         
         <tr><td><input type="button" value="SignUp" onclick="signUp()"/></td></tr>
     </table>
