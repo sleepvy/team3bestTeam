@@ -1,60 +1,173 @@
-body{
+html {
+    min-height: 100%;
+    width: 100%;
     margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    overflow: auto;
 }
 
-#topBar{
-	background-color: #e9f7f9;    
-	margin: 0;
-    padding: 10px;
-
+body {
+    background-image: url("abstract-blur-bright-286198.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
 }
 
 nav ul {
+    width: 100%;
     list-style-type: none;
-    display:flex;
+    display: flex;
     justify-content: space-around;
-    background-color: #000080; /* navy */
     padding: 15px;
+    margin: 0;
 }
 
-nav ul a {    
+#topBar nav ul {
+    width: 100%;
+    background-color: #303030;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: #303030;
+}
+
+#topBar nav ul a {
     text-decoration: none;
     color: white;
 }
 
+nav ul a:hover {
+    text-decoration: none;
+    color: darkgray;
+}
+
+#topBar nav ul a:hover {
+    text-decoration: none;
+    color: darkgray;
+}
+
+/* ADD DATA PAGE */
+
 form {
-    text-align:center;
+    color: #303030;
+    text-align: center;
+}
+
+#formDiv {
+    position: relative;
+    clear: both;
 }
 
 input[type=submit] {
-    padding:5px;
-    background:green;
+    padding: 5px;
+    background: darkblue;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 15pt;
     color: white;
 }
 
 input[type=text] {
     border-radius: 5px;
+    font-size: 15pt;
 }
 
 /* make the placeholders italic */
+
 ::-webkit-input-placeholder {
     color: lightgray;
     font-style: italic;
- }
- :-moz-placeholder {
+}
+
+:-moz-placeholder {
     color: lightgray;
     font-style: italic;
- }
- ::-moz-placeholder {
+}
+
+::-moz-placeholder {
     color: lightgray;
     font-style: italic;
-    
- }
- :-ms-input-placeholder {
-    color: lightgray;  
+
+}
+
+:-ms-input-placeholder {
+    color: lightgray;
     font-style: italic;
- }
+}
+
+#dataStart {
+    text-align: center;
+    color: #303030;
+    font-size: 25pt;
+    margin: 30px;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    /* Fit to screen */
+    position: relative;
+
+}
+
+/* Index.html css */ 
+
+#intro {
+    text-align: center;
+    color: #303030;
+    margin-top: 15%;
+    margin-left: 25%;
+    margin-right: 25%;
+    position: relative;
+}
+
+#teamOp {
+    font-size: 15pt;
+    text-align: center;
+    color: #303030;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+    position: relative;
+}
+
+#what {
+    float: left;
+    clear: left;
+    margin-left: 2%;
+    position: relative;
+}
+
+#whatText {
+    float: left;
+    clear: right;
+    margin-right: 2%;
+    margin-left: 25%;
+    position: relative;
+}
+
+#who {
+    float: left;
+    clear: left;
+    margin-left: 2%;
+    position: relative;
+}
+
+#whoText {
+    float: left;
+    clear: left;
+    margin-right: 2%;
+    margin-left: 25%;
+    position: relative;
+}
+
+
+
