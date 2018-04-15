@@ -6,37 +6,97 @@
     <title> SnowSafe </title>
     <link href="project.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
+
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
     <script src="FireBaseInit.js">
         var db = firebase.database();
-        function UserSignedIn(){
+
+        function UserSignedIn() {
             alert("The UID is set in a variable named 'UID' .");
         }
+
     </script>
 
 </head>
 
 <body>
-  <div id="topBar">
-    <h1 id="title"> SnowSafe 
-<img src="snowflake.png" alt="logo" style="width:50px;height:40px;" align="right">
-</h1>
-    <nav>
-        <ul >
-            <li><a href="index.html">Home</a></li>
-            <li><a href="addData.html">Add Data</a></li>
-            <li><a href="history.html">Personal History</a></li>
-            <li><a href="forecast.html">Avalanche Forecast</a></li>
-            <li><a href="photos.html">Shared Photos</a></li>
-            <li><a href="search.html">Search by Location</a></li>
-        </ul>
+    <div id="topBar">
+        <nav>
+            <ul>
+                <li><a style="color:darkgrey" href="index.html">Home</a></li>
+                <li><a href="addData.html">Add Data</a></li>
+                <li><a href="history.html">Personal History</a></li>
+                <li><a href="forecast.html">Avalanche Forecast</a></li>
+                <li><a href="photos.html">Shared Photos</a></li>
+                <li><a href="search.html">Search by Location</a></li>
+            </ul>
+        </nav>
+    </div>
 
-    </nav>
-  </div>
+    <div id="intro">
+        <h1 style="font-size:100pt;"> SnowSafe </h1>
+    </div>
+    
+    <div id="teamOp">
+        <nav id="team">
+            <ul>
+                <li><a href=#what>What We Do</a></li>
+                <li><a href=#who>Who We Are</a></li>
+                <li><a href=Login.html>Log In</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div id="what"> 
+        <h1 style="font-size:30pt"> What We Do</h1>
+    </div>
+    <div id="whatText"> 
+        <h2 style="font-size:18pt"> Designed for winter sports enthusiasts who wish to safely take part in their sport in the backcountry, SnowSafe uses crowdsourced data to give users a more complete picture on snow safety.</h2>
+        <br> 
+        <h2 style="font-size:18pt"> Start sharing your own backcountry trips in 3 easy steps:</h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F464 Sign up. </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x270D Log your data. </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4F8 Add pictures. </h2><br>
+    </div>
+
+    <div id="who"> 
+        <h1 style="font-size:30pt"> Who We Are</h1>
+    </div>
+    <div id="whoText">
+        <h2 style="font-size:18pt"> Tristan Neate</h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4E9 Email </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F517 Github </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> etc etc </h2><br> 
+        <h2 style="font-size:18pt"> Vy Le </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4E9 Email </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F517 Github </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> etc etc </h2><br> 
+        <h2 style="font-size:18pt"> Spencer Holm</h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4E9 Email </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F517 Github </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> etc etc </h2><br> 
+        <h2 style="font-size:18pt"> Alexander Wilson</h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4E9 Email </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F517 Github </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> etc etc </h2><br> 
+        <h2 style="font-size:18pt"> Ryan Murphy</h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4E9 Email </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F517 Github </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> etc etc </h2><br> 
+        <h2 style="font-size:18pt"> Oliver Larsson</h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F4E9 oliver.larsson@colorado.edu </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> &#x1F517 github.com/OliverLarsson </h2>
+        <h2 style="font-size:14pt; text-indent: 20px"> etc etc </h2><br>
+    </div>
+    
+    <div id="logIn"> 
+        <h1 style="font-size:30pt"> Log In</h1>
+    
+    </div>
+
 </body>
 
 </html>
