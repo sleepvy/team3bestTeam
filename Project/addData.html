@@ -6,7 +6,7 @@
     <title> SnowSafe </title>
     <link href="project.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
+
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
@@ -16,61 +16,65 @@
         //this function is called when the user is signed in on page load
         //aka use it as a setup function because it is called when the UID
         //is known which we need to access user specific data base info
-        function UserSignedIn(){
+        function UserSignedIn() {
             alert("The UID is set in a variable named 'UID' .");
         }
+
     </script>
 
 </head>
 
 <body>
-  <div id="topBar">
+    <div id="topBar">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a style="color:darkgrey" href="addData.html">Add Data</a></li>
+                <li><a href="history.html">Personal History</a></li>
+                <li><a href="forecast.html">Avalanche Forecast</a></li>
+                <li><a href="photos.html">Shared Photos</a></li>
+                <li><a href="search.html">Search by Location</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="dataStart">
+        <h1 style="margin:40px; margin-bottom: 10%;"> Help others get an idea of how the conditions are in your area.</h1>
+        <a href=#formDiv style="font-size: 90px; text-decoration: none; color: #303030; "> &#9661; </a>
+    </div>
 
-    <h1> Add Data 
-<img src="snowflake.png" alt="logo" style="width:50px;height:40px;" align="right">
-</h1>
+    <div id="formDiv">
+        <form>
+            <h3>Date (mm/dd/yyyy): </h3>
+            <input type="text" name=date placeholder="12/04/2017"><br>
+            <h3>Location: </h3>
+            <input type="text" name=location placeholder="Berthoud pass"><br>
+            <h3>Temperature (ºF): </h3>
+            <input type="text" name=temp placeholder="32"><br>
+            <h3>Snow Depth (inches): </h3>
+            <input type="text" name=snowdepth placeholder="48"><br>
+            <h3>New Snow (inches): </h3>
+            <input type="text" name=newsnow placeholder="8"><br>
+            <h3>Slope Angle (degrees): </h3>
+            <input type="text" name=angle placeholder="38"><br>
+            <h3>Crystal Size:</h3>
+            <input type="radio" name=crystalsize value=small>Small<br>
+            <input type="radio" name=crystalsize value=medium>Medium<br>
+            <input type="radio" name=crystalsize value=large>Large<br>
+            <h3>ECTP Results: </h3>
+            <input type="text" name=ecpt placeholder="24"><br>
+            <h3>Snow Layers (inches): </h3>
+            <input type="text" name=layer placeholder="12"><br>
+            <h3>Facet Layer (inches): </h3>
+            <input type="text" name=facet placeholder="18"><br>
+            <br>
+            <input type="submit" value=Submit style="background-color:green size:15px">
+            <br>
+            <br>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="addData.html">Add Data</a></li>
-            <li><a href="history.html">Personal History</a></li>
-            <li><a href="forecast.html">Avalanche Forecast</a></li>
-            <li><a href="photos.html">Shared Photos</a></li>
-            <li><a href="search.html">Search by Location</a></li>
-        </ul>
-    </nav>
-  </div>
-    
+        </form>
 
-    <form>
-        
-        <h4>Location: </h4>
-        <input type="text" name=location placeholder="Berthoud pass"><br>
-        <h4>Temperature (ºF): </h4>
-        <input type="text" name=temp placeholder="32"><br>
-        <h4>Snow Depth (inches): </h4>
-        <input type="text" name=snowdepth placeholder="48"><br>
-        <h4>New Snow (inches): </h4>
-        <input type="text" name=newsnow placeholder="8"><br>
-        <h4>Slope Angle (degrees): </h4>
-        <input type="text" name=angle placeholder="38"><br>
-        <h4>Crystal Size:</h4>
-        <input type="radio" name=crystalsize value=small>Small<br>
-        <input type="radio" name=crystalsize value=medium>Medium<br>
-        <input type="radio" name=crystalsize value=large>Large<br>
-        <h4>ECTP Results: </h4>
-        <input type="text" name=ecpt placeholder="24"><br>
-        <h4>Snow Layers (inches): </h4>
-        <input type="text" name=layer placeholder="12"><br>
-        <h4>Facet Layer (inches): </h4>
-        <input type="text" name=facet placeholder="18"><br>
-        <br>
-        <input type="submit" value=Submit style="background-color:green size:15px">
-        <br>
-        <br>
-        
-    </form>
+    </div>
+
 </body>
 
 </html>
