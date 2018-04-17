@@ -6,34 +6,69 @@
     <title> SnowSafe </title>
     <link href="project.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
+
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
     <script src="FireBaseInit.js">
         var db = firebase.database();
-        function UserSignedIn(){
+
+        function UserSignedIn() {
             alert("The UID is set in a variable named 'UID' .");
         }
+
     </script>
 
 </head>
 
 <body>
-  <div id="topBar">
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="addData.html">Add Data</a></li>
-            <li><a style="color:darkgrey" href="history.html">Personal History</a></li>
-            <li><a href="forecast.html">Avalanche Forecast</a></li>
-            <li><a href="photos.html">Shared Photos</a></li>
-            <li><a href="search.html">Search by Location</a></li>
-        </ul>
-    </nav>
-  </div>
+    <div id="topBar">
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="addData.html">Add Data</a></li>
+                <li><a style="color:darkgrey" href="history.html">Personal History</a></li>
+                <li><a href="forecast.html">Avalanche Forecast</a></li>
+                <li><a href="photos.html">Shared Photos</a></li>
+                <li><a href="search.html">Search by Location</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h1> History </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Temperature (ºF) </th>
+                <th>Snow Depth (inches) </th>
+                <th>New Snow (inches)</th>
+                <th>Slope Angle (degrees)</th>
+                <th> Crystal Size </th>
+                <th> ECTP Results </th>
+                <th> Snow Layers (inches) </th>
+                <th> Facet Layer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="tr">
+                <td id="date"></td>
+                <td id="location"></td>
+                <td id="temp"></td>
+                <td id="depth"></td>
+                <td id="newSnow"></td>
+                <td id="angle"></td>
+                <td id="crystalSize"></td>
+                <td id="ectp"></td>
+                <td id="layers"></td>
+                <td id="facet"></td>
+            </tr>
+        </tbody>
+    </table>
+
 
 </body>
 
