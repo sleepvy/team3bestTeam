@@ -11,16 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
-    <script src="FireBaseInit.js">
-        var db = firebase.database();
-        //this function is called when the user is signed in on page load
-        //aka use it as a setup function because it is called when the UID
-        //is known which we need to access user specific data base info
-        function UserSignedIn() {
-            alert("The UID is set in a variable named 'UID' .");
-        }
-
-    </script>
+    <script src="FireBaseInit.js"></script>
 
 </head>
 
@@ -43,7 +34,7 @@
     </div>
 
     <div id="formDiv">
-        <form>
+        <form id="addDataForm">
             <h3>Date (mm/dd/yyyy): </h3>
             <input type="text" name=date placeholder="12/04/2017"><br>
             <h3>Location: </h3>
@@ -67,13 +58,61 @@
             <h3>Facet Layer (inches): </h3>
             <input type="text" name=facet placeholder="18"><br>
             <br>
-            <input type="submit" value=Submit style="background-color:green size:15px">
+            <input type="button" value=Submit onclick="addDataPoint()" style="background-color:green size:15px">
             <br>
             <br>
 
         </form>
 
     </div>
+
+    <script type="text/javascript">
+    var db = firebase.database();
+    var uid = "";
+    var uname = "";
+    
+    firebase.auth().onAuthStateChanged(function(firebaseUser){
+        if(firebaseUser){
+            uid = firebaseUser.uid;
+            var name = db.ref("users/"+uid+"/Name");
+            name.on('value', function(snapshot){
+                uname = snapshot.val();
+            });
+        }else{
+            window.location = "Login.html";
+        }
+    });
+
+    function addDataPoint(){
+           data = {};
+           var elements = document.getElementById("addDataForm").elements;
+           for (var i = 0, element; element = elements[i++];) {
+               if (element.type === "text" && element.value === ""){
+                   alert("Please fill in: " + element.name);
+                   return;
+               }else if(element.type != "button"){
+                   if(element.type != "radio"){
+                       data[element.name] = element.value;
+                   }else{
+                       if(element.checked == true){
+                           data[element.name] = element.value;
+                       }
+                   }
+               }
+           }
+           if(!(data['crystalsize'])){
+               alert("Please fill in: crystalsize");
+                   return;
+           }
+
+           data['uid'] = uid;
+           data['uname'] = uname;
+
+           var newRef = db.ref("data").push(data);
+           console.log(newRef);
+           db.ref("users/" + uid + "/dataPoints/" + newRef.key).set(1);
+       }
+    </script>
 
 </body>
 

@@ -11,14 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
-    <script src="FireBaseInit.js">
-        var db = firebase.database();
-
-        function UserSignedIn() {
-            alert("The UID is set in a variable named 'UID' .");
-        }
-
-    </script>
+    <script src="FireBaseInit.js"></script>
 
 </head>
 
@@ -38,7 +31,7 @@
     </div>
 
     <h1> History </h1>
-    <table>
+    <table id="dataPointsTable">
         <thead>
             <tr>
                 <th>Date</th>
@@ -69,6 +62,51 @@
         </tbody>
     </table>
 
+
+    <script type="text/javascript">
+    var db = firebase.database();
+    var uid = "";
+    var uname = "";
+    
+    firebase.auth().onAuthStateChanged(function(firebaseUser){
+        if(firebaseUser){
+            uid = firebaseUser.uid;
+            populateTable();
+            var name = db.ref("users/"+uid+"/Name");
+            name.on('value', function(snapshot){
+                uname = snapshot.val();
+            });
+        }else{
+            window.location = "Login.html";
+        }
+    });
+
+    function populateTable(){
+        var table = document.getElementById("dataPointsTable");
+
+        db.ref("users/" + uid + "/dataPoints").on('value', function(snapshots){
+            snapshots.forEach(function(snapshot) {
+                dataId = snapshot.key;
+                db.ref("data/"+dataId).on('value', function(snap){
+                    data = snap.val();
+
+                    var row = table.insertRow(-1);
+                    row.innerHTML = 
+                    "<td>" + data['date'] + "</td>" +
+                    "<td>" + data['location'] + "</td>" +
+                    "<td>" + data['temp'] + "</td>" +
+                    "<td>" + data['snowdepth'] + "</td>" +
+                    "<td>" + data['newsnow'] + "</td>" +
+                    "<td>" + data['angle'] + "</td>" +
+                    "<td>" + data['crystalsize'] + "</td>" +
+                    "<td>" + data['ecpt'] + "</td>" +
+                    "<td>" + data['layer'] + "</td>" +
+                    "<td>" + data['facet'] + "</td>";
+                });
+            });
+        });
+    }
+    </script>
 
 </body>
 

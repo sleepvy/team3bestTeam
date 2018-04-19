@@ -11,12 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
-    <script src="FireBaseInit.js">
-        var db = firebase.database();
-        function UserSignedIn(){
-            alert("The UID is set in a variable named 'UID' .");
-        }
-    </script>
+    <script src="FireBaseInit.js"></script>
 
 </head>
 
@@ -34,6 +29,24 @@
         </ul>
     </nav>
   </div>
+
+  <script type="text/javascript">
+    var db = firebase.database();
+    var uid = "";
+    var uname = "";
+    
+    firebase.auth().onAuthStateChanged(function(firebaseUser){
+        if(firebaseUser){
+            uid = firebaseUser.uid;
+            var name = db.ref("users/"+uid+"/Name");
+            name.on('value', function(snapshot){
+                uname = snapshot.val();
+            });
+        }else{
+            window.location = "Login.html";
+        }
+    });
+    </script>
 
 </body>
 
