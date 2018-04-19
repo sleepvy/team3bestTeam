@@ -13,9 +13,10 @@ firebase.initializeApp(config);
   	  		
 }());
 
-var UID = "";
+/*var UID = "";
 var U_Name = "";
 firebase.auth().onAuthStateChanged(function(firebaseUser){
+	console.log(firebaseUser);
 	if(firebaseUser){
 		UID = firebaseUser.uid;
 		UserSignedIn();
@@ -25,7 +26,7 @@ firebase.auth().onAuthStateChanged(function(firebaseUser){
 			//document.getElementById("UserNameP").innerHTML = snapshot.val();
 		});
 	}else{
-		alert("Would have sent them to login page");
-		//window.location = "Login.html";
+		//alert("Would have sent them to login page");
+		window.location = "Login.html";
 	}
-});
+});*/
