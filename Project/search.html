@@ -31,7 +31,7 @@
   </div>
     
 
-    <!-- MAP --> 
+    <!-- MAP 
 
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map"></div>
@@ -106,9 +106,39 @@
 
     </script>
     
-    <!-- your API key in place of "APIKEY" --> 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZv1tYZgm6pbwO9lGQzUgw2eBD5GDNnXU&libraries=places&callback=initAutocomplete"
-         async defer></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZv1tYZgm6pbwO9lGQzUgw2eBD5GDNnXU&libraries=places&callback=initAutocomplete"
+         async defer></script> -->
+
+    <form id="addDataForm">
+            <h3>Search by location (leave blank to see all data): </h3>
+            <input type="text" name=location placeholder="location" id="locText"><br>
+            <br>
+            <input type="button" value=Submit onclick="populateTable()" style="background-color:green size:15px">
+            <br>
+            <br>
+    </form>
+
+    <table id="dataPointsTable">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Temperature (ºF) </th>
+                <th>Snow Depth (inches) </th>
+                <th>New Snow (inches)</th>
+                <th>Slope Angle (degrees)</th>
+                <th>Crystal Size </th>
+                <th>ECTP Results </th>
+                <th>Snow Layers (inches) </th>
+                <th>Facet Layer</th>
+            </tr>
+        </thead>
+        <tbody id="dataBody">
+          
+        </tbody>
+    </table>
+
 
     <script type="text/javascript">
     var db = firebase.database();
@@ -118,6 +148,7 @@
     firebase.auth().onAuthStateChanged(function(firebaseUser){
         if(firebaseUser){
             uid = firebaseUser.uid;
+            listenForData();
             var name = db.ref("users/"+uid+"/Name");
             name.on('value', function(snapshot){
                 uname = snapshot.val();
@@ -126,6 +157,55 @@
             window.location = "Login.html";
         }
     });
+
+    var locations = {};
+
+    function listenForData(){
+        db.ref("data").on('child_added', function(snapshot){
+              data = snapshot.val();
+
+              var innerHTML = "<tr>" +
+              "<td>" + data['uname'] + "</td>" +
+              "<td>" + data['date'] + "</td>" +
+              "<td>" + data['location'] + "</td>" +
+              "<td>" + data['temp'] + "</td>" +
+              "<td>" + data['snowdepth'] + "</td>" +
+              "<td>" + data['newsnow'] + "</td>" +
+              "<td>" + data['angle'] + "</td>" +
+              "<td>" + data['crystalsize'] + "</td>" +
+              "<td>" + data['ecpt'] + "</td>" +
+              "<td>" + data['layer'] + "</td>" +
+              "<td>" + data['facet'] + "</td>" +
+              "</td>";
+
+              if(locations[data['location']]){
+                locations[data['location']].push(innerHTML);
+              }else{
+                locations[data['location']] = [innerHTML];
+              }
+        });
+    }
+
+    function populateTable(){
+      loc = document.getElementById("locText").value;
+      var table = document.getElementById("dataBody");
+      table.innerHTML = "";
+      
+      if(locations[loc]){
+        for (var i = locations[loc].length - 1; i >= 0; i--) {
+          table.innerHTML += locations[loc][i];
+        }
+      }else{
+        for (var key in locations) {
+            if (locations.hasOwnProperty(key)) {
+                for (var i = locations[key].length - 1; i >= 0; i--) {
+                  table.innerHTML += locations[key][i];
+                }
+            }
+        }
+        alert("No data for that location was found. Displaying all data points instead.")
+      }
+    }
     </script>
     
 </body>
