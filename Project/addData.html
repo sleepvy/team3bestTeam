@@ -108,9 +108,17 @@
            data['uid'] = uid;
            data['uname'] = uname;
 
-           var newRef = db.ref("data").push(data);
-           console.log(newRef);
-           db.ref("users/" + uid + "/dataPoints/" + newRef.key).set(1);
+           var newRef = db.ref("data").push(data, function(error) {
+              if (error) {
+                alert("Data could not be saved." + error);
+              } else {
+                alert("Data saved successfully.");
+                document.getElementById("addDataForm").reset();
+                db.ref("users/" + uid + "/dataPoints/" + newRef.key).set(1);
+              }
+            });
+           
+           
        }
     </script>
 
