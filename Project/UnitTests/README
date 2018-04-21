@@ -1,0 +1,8 @@
+To run this on SnowSafe: 
+  1. Download the Chrome extension: https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd?hl=en 
+  2. Open the Selenium IDE extension. 
+  3. In the app, find the folder "open" icon, and open the script in this folder. 
+  4. Run any of the tests on the right with the "play" icon on the top of the page. 
+  5. To create new tests, click the red "record" icon in the top-right and navigate the SnowSafe page in the way that you want the test to replicate. 
+  
+Note: To continually test the login page, you'll have to clear your history and reload the page, since once logged in you cannot access that page again. 
