@@ -6,47 +6,109 @@
     <title> SnowSafe </title>
     <link href="project.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    
+
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase-database.js"></script>
     <script src="FireBaseInit.js"></script>
 
+    <style media="screen">
+        #uploader {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50%;
+            margin-bottom: 10px;
+        }
+        #uploads {
+            margin: 30%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+
+    </style>
+
 </head>
 
 <body>
-  <div id="topBar">
+    <div id="topBar">
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="addData.html">Add Data</a></li>
-            <li><a href="history.html">Personal History</a></li>
-            <li><a href="forecast.html">Avalanche Forecast</a></li>
-            <li><a style="color:darkgrey" href="photos.html">Shared Photos</a></li>
-            <li><a href="search.html">Search by Location</a></li>
-        </ul>
-    </nav>
-  </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="addData.html">Add Data</a></li>
+                <li><a href="history.html">Personal History</a></li>
+                <li><a href="forecast.html">Avalanche Forecast</a></li>
+                <li><a style="color:darkgrey" href="photos.html">Shared Photos</a></li>
+                <li><a href="search.html">Search by Location</a></li>
+            </ul>
+        </nav>
 
-  <script type="text/javascript">
-    var db = firebase.database();
-    var uid = "";
-    var uname = "";
+    </div>
+
+    <div id="uploads">
+        <progress value="0" max="100" id="uploader">0%</progress>
+        <input type="file" value="upload" id="fileButton" />
+
+    </div>
     
-    firebase.auth().onAuthStateChanged(function(firebaseUser){
-        if(firebaseUser){
-            uid = firebaseUser.uid;
-            var name = db.ref("users/"+uid+"/Name");
-            name.on('value', function(snapshot){
-                uname = snapshot.val();
-            });
-        }else{
-            window.location = "Login.html";
-        }
-    });
+    <script type="text/javascript">
+        var db = firebase.database();
+        var uid = "";
+        var uname = "";
+ 
+ 
+        firebase.auth().onAuthStateChanged(function(firebaseUser) {
+            if (firebaseUser) {
+                uid = firebaseUser.uid;
+                var name = db.ref("users/" + uid + "/Name");
+                name.on('value', function(snapshot) {
+                    uname = snapshot.val();
+                });
+            } else {
+                window.location = "Login.html";
+            }
+        });
+        
+        // Upload file attempt 
+
+        var uploader = document.getElementById('uploader');
+        var fileButton = document.getElementById('fileButton');
+
+        // Listen for file selection 
+        fileButton.addEventListener('change', function(e) {
+            // Get file 
+            var file = e.target.files[0];
+
+            // Create storage ref 
+            var storageRef = firebase.storage().ref('users/' + uid + '/photos/' + file.name);
+
+            // Upload file 
+            var task = storageRef.put(file);
+
+            // Update progress bar 
+            task.on('state_changed',
+                function progress(snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                    // may need to go to Firebase rules tab under storage, 
+                    //set rule to if true 
+                },
+
+                function error(err) {
+
+                },
+
+                function complete() {
+                    //Database ref 
+                    var dbRef = firebase.database().ref('users/' + uid + '/photos/' + file.name).set(1);   
+                }
+            );
+        });
+
     </script>
+
 
 </body>
 
