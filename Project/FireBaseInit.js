@@ -6,7 +6,7 @@ var config = {
 	authDomain: "snowsafe-b378c.firebaseapp.com",
 	databaseURL: "https://snowsafe-b378c.firebaseio.com",
 	projectId: "snowsafe-b378c",
-	storageBucket: "",
+	storageBucket: "gs://snowsafe-b378c.appspot.com",
 	messagingSenderId: "676990316274"
 };
 firebase.initializeApp(config);
