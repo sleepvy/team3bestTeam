@@ -191,7 +191,14 @@ input[type=text] {
     color: #303030; 
 }
 
+#dataPointsTable td, th {
+    text-align: center;
+    padding: 10px;
+}
 
+#dataPointsTable th {
+    font-size: 14pt;
+}
 
 
 
