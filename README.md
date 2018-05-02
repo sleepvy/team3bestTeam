@@ -1,13 +1,14 @@
-# team3bestTeam
+# SnowSafe
+Members: Vy Le, Tristan Neate, Spencer Holm, Oliver Larsson, Alexander Wilson, Ryan Murphy
 
-Vy Le
+Project description: Designed for winter sports enthusiasts who wish to safely take part in their sport in the backcountry, SnowSafe uses crowdsourced data to give users a more complete picture on snow safety. Log in, record data about snow at your location, and look up what others have recorded to see if an area is safe. 
 
-Tristan Neate
+Organization/Structure: 
+  - The milestones are in the "Milestones" folder.
+  - Everything related to our actual project, like the HTML, CSS, and JS files, are in the "Project" folder. 
+  - Test cases using the Selenium IDE are in the file "testsFinal.side". The Selenium chrome extension is required to view and execute the tests.
+  
 
-Spencer Holm
 
-Ryan Murphy
 
-Oliver Larsson
 
-Alexander Wilson
