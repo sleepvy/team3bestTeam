@@ -6,8 +6,12 @@ Project description: Designed for winter sports enthusiasts who wish to safely t
 Organization/Structure: 
   - The milestones are in the "Milestones" folder.
   - Everything related to our actual project, like the HTML, CSS, and JS files, are in the "Project" folder. 
-  - Test cases using the Selenium IDE are in the file "testsFinal.side". The Selenium chrome extension is required to view and execute the tests.
-  
+  - Test cases using the Selenium IDE are in the file "testsFinal.side". In order to run the test case scripts in GitHub, you need to have the Selenium IDE extension on your browser: https://www.seleniumhq.org/projects/ide/
+ Once opened in browser: 
+ Open Project (folder in top-right) > Unit Tests > testsFinal.side
+ To play tests, click play icon at top 
+ To view raw scripts: File > Open File > Unit Tests > testsFinal.side 
+
 
 
 
